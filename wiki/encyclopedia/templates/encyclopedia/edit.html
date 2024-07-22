@@ -1,0 +1,30 @@
+{%extends "encyclopedia/layout.html"%}
+
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+
+<h1>
+    Edit Page
+</h1>
+<div>
+    <form action="{% url 'save_changes' %}" method = "POST">
+        {% csrf_token %}
+        <div class="textarea">
+            <label for="newtitle">Enter a title for the page</label>
+            <textarea id="newtitle" name="newtitle" placeholder="Enter a title" required>{{title}}</textarea>
+        </div>
+        <div class="textarea">
+            <label for="newcontent">Enter content for the page</label>
+            <textarea id="newcontent" name="newcontent" placeholder="Enter content" required>{{content}}</textarea>
+        </div> 
+        <div class="submit-button">
+            <input class="btn btn-primary" type="submit" value="Save the changes">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
